@@ -66,5 +66,6 @@ class Category extends Common
 		}else{
 			return $this -> error('修改失败');
 		}
+		$a = '我是master分支';
 	}
 }

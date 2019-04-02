@@ -4,7 +4,7 @@ use think\Controller;
 /**
 * 公共控制器
 */
-class Common extends Controller
+class CommonController extends Controller
 {
 	public $request;
 

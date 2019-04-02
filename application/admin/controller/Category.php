@@ -2,10 +2,11 @@
 namespace app\admin\controller;
 use think\Db;
 /**
-* 商品管理
+* 类型管理
 */
-class Category extends Common
+class Category extends CommonController
 {
+    private $category = ['手机','电脑','男装','鞋子','电器','女裝'];
 	public function add()
 	{
 		if ($this ->request -> isGet()) {
@@ -17,16 +18,16 @@ class Category extends Common
 		if ($result) {
 			return $this -> error('类别已经存在');
 		}
-//		 $category = ['手机','电脑','男装','鞋子','电器','女裝'];
-		 if (in_array($data['cname'],$category)) {
+
+		 if (in_array($data['cname'],$this -> category)) {
 			$res=$query->insert($data);
 			if ($res) {
 				return $this->success('添加成功','index');				
 			}else{
 				return $this -> error('添加失败');	
 			}				
-//		 }else{
-//		 	return $this -> error('类型不符合要求');
+		 }else{
+		 	return $this -> error('类型不符合要求');
 		 }
 	}
 
@@ -60,12 +61,15 @@ class Category extends Common
 			$this ->assign('data',$data);
 			return $this -> fetch();
 		}
+
+		if(!in_array($data['cname'],$this -> category)){
+		    return $this -> error('修改失败','','',1);
+        }
 		$res=$query-> where('id',$id) -> update($data);
 		if ($res) {
 			return $this -> success('修改成功','index');
 		}else{
 			return $this -> error('修改失败');
 		}
-		$a = '我是master分支';
 	}
 }

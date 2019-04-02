@@ -3,7 +3,7 @@ namespace app\admin\controller;
 /**
 * 后台首页
 */
-class Index extends Common
+class Index extends CommonController
 {
 	
 	public function index()

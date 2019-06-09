@@ -14,7 +14,7 @@ class ClassName extends CommonController
 
     public function add()
     {
-        
+
     }
 
     public function del()
